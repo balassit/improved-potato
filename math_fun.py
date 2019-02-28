@@ -72,14 +72,13 @@ def selectionSort(items):
         items[i], items[min_idx] = items[min_idx], items[i]
     return items
 
-def insertionSort(items):
+def insertion_sort(items):
     for i in range(1, len(items)):
         current = items[i]
-        j = i - 1
-        while j >=0 and current <= items[j]:
-            items[j+1] = items[j]
-            j -= 1
-        items[j+1] = current
+        while i > 0 and  items[i-1] > current:
+            items[i] = items[i-1]
+            i -= 1
+        items[i] = current
     return items
 
 class QuickSort():
