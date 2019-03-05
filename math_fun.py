@@ -66,31 +66,33 @@ print(list(list_of_sum(num)))
 def selectionSort(items):
     for i in range(len(items)):
         min_idx = i
-        for j in range(i+1, len(items)):
+        for j in range(i + 1, len(items)):
             if items[min_idx] > items[j]:
                 min_idx = j
         items[i], items[min_idx] = items[min_idx], items[i]
     return items
 
+
 def insertion_sort(items):
     for i in range(1, len(items)):
         current = items[i]
-        while i > 0 and  items[i-1] > current:
-            items[i] = items[i-1]
+        while i > 0 and items[i - 1] > current:
+            items[i] = items[i - 1]
             i -= 1
         items[i] = current
     return items
 
-class QuickSort():
+
+class QuickSort:
     def partition(self, items, low, high):
         i = low - 1
         pivot = items[high]
         for j in range(low, high):
             if items[j] <= pivot:
-                i = i+1
-                items[i],items[j] = items[j],items[i]
-        items[i+1],items[high] = items[high],items[i+1]
-        return i+1
+                i = i + 1
+                items[i], items[j] = items[j], items[i]
+        items[i + 1], items[high] = items[high], items[i + 1]
+        return i + 1
 
     def sort(self, items, low, high):
         if low < high:
@@ -99,17 +101,18 @@ class QuickSort():
             self.sort(items, partition + 1, high)
 
     def quickSort(self, items):
-        self.sort(items, 0, len(items)-1)
+        self.sort(items, 0, len(items) - 1)
         return items
 
-def mergeSort(items):
-    if len(items) >1:
-        mid = len(items)//2 #Finding the mid of the items
-        L = items[:mid] # Dividing the items elements
-        R = items[mid:] # into 2 halves
 
-        mergeSort(L) # Sorting the first half
-        mergeSort(R) # Sorting the second half
+def mergeSort(items):
+    if len(items) > 1:
+        mid = len(items) // 2  # Finding the mid of the items
+        L = items[:mid]  # Dividing the items elements
+        R = items[mid:]  # into 2 halves
+
+        mergeSort(L)  # Sorting the first half
+        mergeSort(R)  # Sorting the second half
 
         i = j = k = 0
 
@@ -117,40 +120,49 @@ def mergeSort(items):
         while i < len(L) and j < len(R):
             if L[i] < R[j]:
                 items[k] = L[i]
-                i+=1
+                i += 1
             else:
                 items[k] = R[j]
-                j+=1
-            k+=1
+                j += 1
+            k += 1
 
         # Checking if any element was left
         while i < len(L):
             items[k] = L[i]
-            i+=1
-            k+=1
+            i += 1
+            k += 1
 
         while j < len(R):
             items[k] = R[j]
-            j+=1
-            k+=1
+            j += 1
+            k += 1
     return items
+
 
 def countingSort(items, maxval=5):
     m = maxval + 1
-    count = [0] * m               # init with zeros
+    count = [0] * m  # init with zeros
     for a in items:
-        count[a] += 1             # count occurences
+        count[a] += 1  # count occurences
     i = 0
-    for a in range(m):            # emit
-        for c in range(count[a]): # - emit 'count[a]' copies of 'a'
+    for a in range(m):  # emit
+        for c in range(count[a]):  # - emit 'count[a]' copies of 'a'
             items[i] = a
             i += 1
     return items
 
-items = [5,4,3,2,1]
+
+items = [5, 4, 3, 2, 1]
 print("selection sort", selectionSort(items))
 print("insertion sort", insertionSort(items))
 print("quick sort", QuickSort().quickSort(items))
 print("merge sort", mergeSort(items))
 print("counting sort", countingSort(items))
 
+
+def find_max(x):
+    max_ = 0
+    for el in x:
+        if el > max_:
+            max_ = el
+            return max_

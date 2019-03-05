@@ -83,6 +83,12 @@ class Tree:
             self.root = Node(key, data)
         self.size += 1
 
+    def get_height(self, node):
+        if node is None:
+            return 0
+        else:
+            return max(self.get_height(node.left), self.get_height(node.right)) + 1
+
     def __setitem__(self, k, v):
         self.put(k, v)
 
@@ -143,6 +149,9 @@ def binary_search_chooser(value):
     return binary_search_chooser_inner
 
 
+# without stack or recurssion
+# https://www.geeksforgeeks.org/inorder-non-threaded-binary-tree-traversal-without-recursion-or-stack/
+
 # inorder traversal given the root node
 def inorder(t):
     if t:
@@ -168,14 +177,8 @@ def postorder(t):
 
 
 tree = Tree()
-tree["j"] = "j"
-tree["f"] = "f"
-tree["a"] = "a"
-tree["d"] = "d"
-tree["h"] = "h"
-tree["k"] = "k"
-tree["z"] = "z"
-
+for i in range(1000):
+    tree[i] = i
 
 print("in order")
 a = [n for n in inorder(tree.root)]
@@ -204,3 +207,5 @@ print(a)
 print("Binary search DFS")
 a = [n for n in dfs(tree.root, binary_search_chooser(6))]
 print(a)
+
+print("height", tree.get_height(tree.root))
