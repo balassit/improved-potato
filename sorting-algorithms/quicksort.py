@@ -1,5 +1,6 @@
-def quicksort(items):
+def quick_sort(items):
     sort(items, 0, len(items) - 1)
+    return items
 
 
 def sort(items, low, high):
@@ -20,6 +21,11 @@ def partition(items, low, high):
     return low
 
 
-items = [2, 1, 3, 0, 4, 6, 5, 8, 7, 9]
-quicksort(items)
-print(items)
+"""
+Sort a given list and print before and after. Assume list is integers
+"""
+if __name__ == "__main__":
+    items: list = [54, 26, 93, 17]
+    print(f"before sorting: {items}")
+    items = quick_sort(items)
+    print(f"after sorting: {items}")
