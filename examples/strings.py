@@ -4,9 +4,10 @@ import sys
 def unique_string(word):
     dictionary = [False for x in range(128)]
     for char in word:
-        dictionary[ord(char)] = True
-        if dictionary[ord(char)]:
+        val = ord(char)
+        if dictionary[val]:
             return False
+        dictionary[val] = True
     return True
 
 
