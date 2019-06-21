@@ -20,14 +20,14 @@ class LinkedList:
 
     def insert(self, data: Node):
         if not isinstance(data, Node):
-            nextNode = Node(data)
+            next_node = Node(data)
         if self.root is None:
-            self.root = nextNode
+            self.root = next_node
             return
         current = self.root
         while current.next:
             current = current.next
-        current.next = nextNode
+        current.next = next_node
         self.length += 1
 
     def get(self, value):
@@ -46,7 +46,7 @@ class LinkedList:
                 if prev:
                     prev.next = curr.next
                 else:
-                    self.head = curr.next
+                    self.root = curr.next
                 return True
             prev = curr
             curr = curr.next

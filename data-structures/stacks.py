@@ -1,6 +1,8 @@
 # Python 3 program to demonstrate implementation
 # of k stacks in a single array in time and space
 # efficient way
+
+
 class KStacks:
     def __init__(self, k, n):
         self.k = k  # Number of stacks.
@@ -24,17 +26,17 @@ class KStacks:
         self.next[self.n - 1] = -1
 
     # Check whether given stack is empty.
-    def isEmpty(self, sn):
+    def is_empty(self, sn):
         return self.top[sn] == -1
 
     # Check whether there is space left for
     # pushing new elements or not.
-    def isFull(self):
+    def is_full(self):
         return self.free == -1
 
     # Push 'item' onto given stack number 'sn'.
     def push(self, item, sn):
-        if self.isFull():
+        if self.is_full():
             print("Stack Overflow")
             return
 
@@ -57,7 +59,7 @@ class KStacks:
 
     # Pop item from given stack number 'sn'.
     def pop(self, sn):
-        if self.isEmpty(sn):
+        if self.is_empty(sn):
             return None
 
         # Get the item at the top of the stack.
