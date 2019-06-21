@@ -51,9 +51,9 @@ def rotate(matrix):
         last = len(matrix) - i - 1
         for j in range(first, last):
             offset = j - first
-            matrix[first][i], matrix[last - offset][first], matrix[last][last - offset], matrix[i][
-                last
-            ] = (
+            matrix[first][i], matrix[last - offset][first], matrix[last][
+                last - offset
+            ], matrix[i][last] = (
                 matrix[last - offset][first],
                 matrix[last][last - offset],
                 matrix[i][last],

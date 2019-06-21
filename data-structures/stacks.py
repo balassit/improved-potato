@@ -102,11 +102,6 @@ if __name__ == "__main__":
     print("Popped element from stack 1 is " + str(kstacks.pop(1)))
     print("Popped element from stack 0 is " + str(kstacks.pop(0)))
 
-# This code is contributed by Varun Patil
-
-
-from collections import deque
-
 
 class Stack:
     def __init__(self):

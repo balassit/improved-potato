@@ -51,7 +51,10 @@ class Solution:
                 try:
                     next(a)
                 except StopIteration:
-                    self.answer = [self.answer[0] + list_index, self.answer[1] + list_index]
+                    self.answer = [
+                        self.answer[0] + list_index,
+                        self.answer[1] + list_index,
+                    ]
                     return self.answer
 
     def twoSum(self, nums, target):

@@ -20,7 +20,9 @@ def check(expected, words):
 def match(expected_dict, word_dict):
     count = 0
     for char in expected_dict:
-        if word_dict.get(char) is not None and word_dict.get(char) <= expected_dict.get(char):
+        if word_dict.get(char) is not None and word_dict.get(char) <= expected_dict.get(
+            char
+        ):
             count += word_dict.get(char)
     return count
 
