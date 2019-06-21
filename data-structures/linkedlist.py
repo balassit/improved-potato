@@ -12,7 +12,13 @@ class LinkedList:
         self.root = None
         self.length = 0
 
-    def insert(self, data):
+    def __iter__(self):
+        node = self.root
+        while node:
+            yield node
+            node = node.next
+
+    def insert(self, data: Node):
         if not isinstance(data, Node):
             nextNode = Node(data)
         if self.root is None:
@@ -25,11 +31,11 @@ class LinkedList:
         self.length += 1
 
     def get(self, value):
-        curr = self.root
-        while curr:
-            if curr.data == value:
+        current = self.root
+        while current:
+            if current.data == value:
                 return True
-            curr = curr.next
+            current = current.next
         return False
 
     def delete(self, value):
@@ -44,7 +50,6 @@ class LinkedList:
                 return True
             prev = curr
             curr = curr.next
-
         return False
 
 
@@ -75,6 +80,7 @@ l.insert(2)
 l.insert(3)
 l.insert(4)
 l.delete(4)
-print(l.length)
+print([node.data for node in l])
+
 # delete_dups(l.root)
 # print(kth_to_last(l.root,1))
