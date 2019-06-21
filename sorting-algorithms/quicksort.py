@@ -11,6 +11,15 @@ def sort(items, low, high):
     sort(items, p + 1, high)
 
 
+"""
+This function takes last element as pivot, places
+the pivot element at its correct position in sorted
+array, and places all smaller (smaller than pivot)
+to left of pivot and all greater elements to right
+of pivot
+"""
+
+
 def partition(items, low, high):
     pivot = items[high]
     for i in range(low, high):

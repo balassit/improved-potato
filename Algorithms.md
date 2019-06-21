@@ -21,7 +21,7 @@ This all applies for arrays, but for linked list, since you do not have a locali
 - Θ(n2) comparisons always
 - Θ(n) swaps
 - Not adaptive
-- take the current element and exchange it with the smallest element on the right hand side of the current element. 
+- take the current element and exchange it with the smallest element on the right hand side of the current element.
 -  minimizing the number of swaps. In applications where the cost of swapping items is high, selection sort very well may be the algorithm of choice.
 
 3. Bubble Sort: never use it
@@ -32,7 +32,7 @@ This all applies for arrays, but for linked list, since you do not have a locali
 
 ### Merge Sort, Quicksort
 
-1. Merge Sort: 
+1. Merge Sort:
 -  best when the input is large
 - Stable
 - Θ(n) extra space for arrays
@@ -41,7 +41,7 @@ This all applies for arrays, but for linked list, since you do not have a locali
 - Not adaptive
 - Does not require random access to data
 
-2. Quick Sort: 
+2. Quick Sort:
 - choose a pivot
 - recurssiion
 - swap pivot with
@@ -77,6 +77,9 @@ Inorder, Preorder, Postorder Tree Traversals
 - O(n·log(n)) time always
 - not stable
 - O(1) space which gains benefit over merge sort
+
+1. Heapify procedure can be applied to a node only if its children nodes are heapified. So the heapification must be performed in the bottom up order.
+2. If the parent node is stored at index `i`, the left child can be calculated by 2 * `i` + 1 and right child by 2 * `i` + 2 (assuming the indexing starts at 0).
 
 Topological Sorting in a DAG
 
