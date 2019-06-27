@@ -176,9 +176,29 @@ def postorder(t):
         yield t.key
 
 
+def sorted_arr_to_bst(arr):
+    if not arr:
+        return None
+
+    # find middle
+    mid = (len(arr)) // 2
+
+    # make the middle element the root
+    root = Node(arr[mid], arr[mid])
+
+    # left subtree of root has all
+    # values <arr[mid]
+    root.left = sorted_arr_to_bst(arr[:mid])
+
+    # right subtree of root has all
+    # values >arr[mid]
+    root.right = sorted_arr_to_bst(arr[mid + 1 :])
+    return root
+
+
+arr = [1, 2, 3, 4, 5]
 tree = Tree()
-for i in range(100):
-    tree[i] = i
+tree.root = sorted_arr_to_bst(arr)
 
 print("in order")
 a = [n for n in inorder(tree.root)]
