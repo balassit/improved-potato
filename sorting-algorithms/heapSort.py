@@ -18,6 +18,7 @@ def heapify(items, n, i):
     # Change root, if needed
     if largest != i:
         items[i], items[largest] = items[largest], items[i]  # swap
+        print(items, n, largest)
 
         # Heapify the root.
         heapify(items, n, largest)
@@ -29,6 +30,7 @@ def heap_sort(items):
 
     # Build a maxheap.
     for i in range(n, -1, -1):
+
         heapify(items, n, i)
 
     # One by one extract elements

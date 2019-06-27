@@ -177,7 +177,7 @@ def postorder(t):
 
 
 tree = Tree()
-for i in range(1000):
+for i in range(100):
     tree[i] = i
 
 print("in order")
