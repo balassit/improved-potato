@@ -51,33 +51,37 @@ class Graph:
         return "{}({})".format(self.__class__.__name__, dict(self.vertices))
 
     def dfs(self, start):
-        visited, stack = [], [start]
+        visited, stack = set(), [start]
         while stack:
             vertex = stack.pop()
             if vertex not in visited:
-                visited.append(vertex)
-                stack.extend(set(self.vertices[vertex].neighbors) - set(visited))
+                visited.add(vertex)
+                stack.extend(set(self.vertices[vertex].neighbors) - visited)
+                print("neighbors", self.vertices[vertex].neighbors)
+                print("visited", visited)
+                print("stack", stack)
+                print("")
         return visited
 
     def bfs(self, start):
-        visited, queue = [], [start]
+        visited, queue = set(), [start]
         while queue:
             vertex = queue.pop(0)
             if vertex not in visited:
-                visited.append(vertex)
-                queue.extend(set(self.vertices[vertex].neighbors) - set(visited))
+                visited.add(vertex)
+                queue.extend(set(self.vertices[vertex].neighbors) - visited)
         return visited
 
     def bfs_paths(self, start, goal):
         queue = [(start, [start])]
         while queue:
             (vertex, path) = queue.pop(0)
-            for next in set(self.vertices[vertex].neighbors) - set(path):
+            for next_node in set(self.vertices[vertex].neighbors) - set(path):
                 print(f"here: {set(self.vertices[vertex].neighbors) - set(path)}")
-                if next == goal:
-                    yield path + [next]
+                if next_node == goal:
+                    yield path + [next_node]
                 else:
-                    queue.append((next, path + [next]))
+                    queue.append((next_node, path + [next_node]))
                     print(queue)
 
     def shortest_path(self, start, goal):
@@ -94,8 +98,8 @@ class Graph:
             path = [start]
         if start == goal:
             yield path
-        for next in set(self.vertices[start].neighbors) - set(path):
-            yield from self.dfs_paths(next, goal, path + [next])
+        for next_node in set(self.vertices[start].neighbors) - set(path):
+            yield from self.dfs_paths(next_node, goal, path + [next_node])
 
 
 # breadth-first search and depth-first search.
@@ -111,6 +115,6 @@ for edge in edges:
 g.print_graph()
 # print('bfs', g.bfs('A')) # {'B', 'C', 'A', 'F', 'D', 'E'}
 # print(list(g.bfs_paths('A', 'F'))) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
-print("shortest", g.shortest_path("A", "F"))  # ['A', 'C', 'F']
-# print('dfs', g.dfs('C')) # {'E', 'D', 'F', 'A', 'C', 'B'}
+# print("shortest", g.shortest_path("A", "F"))  # ['A', 'C', 'F']
+print("dfs", g.dfs("C"))  # {'E', 'D', 'F', 'A', 'C', 'B'}
 # print(list(g.dfs_paths('C', 'F'))) # [['C', 'F'], ['C', 'A', 'B', 'E', 'F']]
