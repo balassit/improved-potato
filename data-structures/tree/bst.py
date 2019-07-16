@@ -195,37 +195,79 @@ def sorted_arr_to_bst(arr):
     root.right = sorted_arr_to_bst(arr[mid + 1 :])
     return root
 
+def create_tree_in_order_pre_order(inorder_arr, preorder_arr):
+    if len(inorder_arr) == 1:
+        root = Node(inorder_arr[0], inorder_arr[0])
 
-arr = [1, 2, 3, 4, 5]
-tree = Tree()
-tree.root = sorted_arr_to_bst(arr)
+    for i, v in enumerate(preorder_arr):
+        root = Node(v,v)
+        index = inorder_arr.index(v)
+        left = inorder_arr[:index]
+        right = inorder_arr[index+1:]
+        create_tree_in_order_pre_order(left, preorder_arr[i:])
+        create_tree_in_order_pre_order(right, preorder_arr[i:])
 
-print("in order")
-a = [n for n in inorder(tree.root)]
-print(a)
+        print(v, left, right)
 
-print("pre order")
-a = [n for n in preorder(tree.root)]
-print(a)
+def constructFromPrePost(self, pre, post):
+    stack = [Node(pre[0])]
+    j = 0
+    for v in pre[1:]:
+        node = Node(v)
+        print("node", v)
+        while stack[-1].val == post[j]:
+            print("here", stack[-1].val)
+            stack.pop()
+            j += 1
+        if not stack[-1].left:
+            print("left", stack[-1].val, node.val)
+            stack[-1].left = node
+        else:
+            print("right", stack[-1].val, node.val)
+            stack[-1].right = node
+        stack.append(node)
+        for a in stack:
+            print(a.val, end= " ")
+        print()
+    return stack[0]
 
-print("post order")
-a = [n for n in postorder(tree.root)]
-print(a)
 
-print("Breadth first search")
-a = [n for n in bfs(tree.root)]
-print(a)
 
-print("DFS left to right")
-a = [n for n in dfs(tree.root, chooser=left_then_right)]
-print(a)
+# arr = [1, 2, 3, 4, 5, 6]
+# tree = Tree()
+# tree.root = sorted_arr_to_bst(arr)
 
-print("DFS right to left")
-a = [n for n in dfs(tree.root, chooser=right_then_left)]
-print(a)
+# print("in order")
+# a = [n for n in inorder(tree.root)]
+# print(a)
 
-print("Binary search DFS")
-a = [n for n in dfs(tree.root, binary_search_chooser(6))]
-print(a)
+# print("pre order")
+# a = [n for n in preorder(tree.root)]
+# print(a)
 
-print("height", tree.get_height(tree.root))
+# print("post order")
+# a = [n for n in postorder(tree.root)]
+# print(a)
+
+# print("Breadth first search")
+# a = [n for n in bfs(tree.root)]
+# print(a)
+
+# print("DFS left to right")
+# a = [n for n in dfs(tree.root, chooser=left_then_right)]
+# print(a)
+
+# print("DFS right to left")
+# a = [n for n in dfs(tree.root, chooser=right_then_left)]
+# print(a)
+
+# print("Binary search DFS")
+# a = [n for n in dfs(tree.root, binary_search_chooser(6))]
+# print(a)
+
+# print("height", tree.get_height(tree.root))
+
+inorder_arr = [23,18,17,4,3,13,26]
+preorder_arr = [3,17,18,23,4,13,26]
+root = create_tree_in_order_pre_order(inorder_arr, preorder_arr)
+
