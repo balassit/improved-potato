@@ -57,10 +57,7 @@ class Graph:
             if vertex not in visited:
                 visited.add(vertex)
                 stack.extend(set(self.vertices[vertex].neighbors) - visited)
-                print("neighbors", self.vertices[vertex].neighbors)
-                print("visited", visited)
-                print("stack", stack)
-                print("")
+                print(visited)
         return visited
 
     def bfs(self, start):
@@ -70,6 +67,7 @@ class Graph:
             if vertex not in visited:
                 visited.add(vertex)
                 queue.extend(set(self.vertices[vertex].neighbors) - visited)
+                print(visited)
         return visited
 
     def bfs_paths(self, start, goal):
@@ -77,12 +75,10 @@ class Graph:
         while queue:
             (vertex, path) = queue.pop(0)
             for next_node in set(self.vertices[vertex].neighbors) - set(path):
-                print(f"here: {set(self.vertices[vertex].neighbors) - set(path)}")
                 if next_node == goal:
                     yield path + [next_node]
                 else:
                     queue.append((next_node, path + [next_node]))
-                    print(queue)
 
     def shortest_path(self, start, goal):
         try:
@@ -113,7 +109,7 @@ for edge in edges:
     g.add_edge(edge[:1], edge[1:])
 
 g.print_graph()
-# print('bfs', g.bfs('A')) # {'B', 'C', 'A', 'F', 'D', 'E'}
+# print('bfs', g.bfs('C')) # {'B', 'C', 'A', 'F', 'D', 'E'}
 # print(list(g.bfs_paths('A', 'F'))) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
 # print("shortest", g.shortest_path("A", "F"))  # ['A', 'C', 'F']
 print("dfs", g.dfs("C"))  # {'E', 'D', 'F', 'A', 'C', 'B'}
