@@ -152,12 +152,62 @@ def binary_search_chooser(value):
 # without stack or recurssion
 # https://www.geeksforgeeks.org/inorder-non-threaded-binary-tree-traversal-without-recursion-or-stack/
 
+
+def validate_bst(t):
+    if not t:
+        return True
+    s = list()
+    prev = None
+    while t or s:
+        while t:
+            s.append(t)
+            t = t.left
+        t = s.pop()
+
+        if prev and prev.key >= t.key:
+            return False
+        prev = t
+        t = t.right
+    return True
+
+def kth_smallest(t, k):
+    if not t:
+        return True
+    s = list()
+    while t or s:
+        while t:
+            s.append(t)
+            t = t.left
+        t = s.pop()
+
+        k-= 1
+        if k == 0:
+            return t.data
+        t = t.right
+    return -1
+
+
 # inorder traversal given the root node
 def inorder(t):
     if t:
         yield from inorder(t.left)
         yield t.key
         yield from inorder(t.right)
+
+
+def inorder_iterative(t):
+    if not t:
+        return None
+    s = list()
+    res = list()
+    while t or s:
+        while t:
+            s.append(t)
+            t = t.left
+        t = s.pop()
+        res.append(t)
+        t = t.right
+    return res
 
 
 # pre-order traversal given the root node
@@ -195,19 +245,21 @@ def sorted_arr_to_bst(arr):
     root.right = sorted_arr_to_bst(arr[mid + 1 :])
     return root
 
+
 def create_tree_in_order_pre_order(inorder_arr, preorder_arr):
     if len(inorder_arr) == 1:
         root = Node(inorder_arr[0], inorder_arr[0])
 
     for i, v in enumerate(preorder_arr):
-        root = Node(v,v)
+        root = Node(v, v)
         index = inorder_arr.index(v)
         left = inorder_arr[:index]
-        right = inorder_arr[index+1:]
+        right = inorder_arr[index + 1 :]
         create_tree_in_order_pre_order(left, preorder_arr[i:])
         create_tree_in_order_pre_order(right, preorder_arr[i:])
 
         print(v, left, right)
+
 
 def constructFromPrePost(self, pre, post):
     stack = [Node(pre[0])]
@@ -227,17 +279,27 @@ def constructFromPrePost(self, pre, post):
             stack[-1].right = node
         stack.append(node)
         for a in stack:
-            print(a.val, end= " ")
+            print(a.val, end=" ")
         print()
     return stack[0]
 
 
-
-# arr = [1, 2, 3, 4, 5, 6]
 # tree = Tree()
-# tree.root = sorted_arr_to_bst(arr)
+# tree.root = Node(9,9)
+# tree.root.left = Node(10,10)
+# tree.root.right = Node(2,2)
+# tree.root.left.left = Node(1,1)
+# tree.root.left.right = Node(3,3)
 
-# print("in order")
+arr = [1, 4, 5, 7, 8, 9]
+tree = Tree()
+tree.root = sorted_arr_to_bst(arr)
+
+print("3rd smallest: ", kth_smallest(tree.root, 3))
+
+print("in order")
+print(inorder_iterative(tree.root))
+print("valid BST: ", validate_bst(tree.root))
 # a = [n for n in inorder(tree.root)]
 # print(a)
 
@@ -267,7 +329,6 @@ def constructFromPrePost(self, pre, post):
 
 # print("height", tree.get_height(tree.root))
 
-inorder_arr = [23,18,17,4,3,13,26]
-preorder_arr = [3,17,18,23,4,13,26]
-root = create_tree_in_order_pre_order(inorder_arr, preorder_arr)
-
+# inorder_arr = [23,18,17,4,3,13,26]
+# preorder_arr = [3,17,18,23,4,13,26]
+# root = create_tree_in_order_pre_order(inorder_arr, preorder_arr)
