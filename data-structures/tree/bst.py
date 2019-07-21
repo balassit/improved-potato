@@ -170,6 +170,7 @@ def validate_bst(t):
         t = t.right
     return True
 
+
 def kth_smallest(t, k):
     if not t:
         return True
@@ -180,7 +181,7 @@ def kth_smallest(t, k):
             t = t.left
         t = s.pop()
 
-        k-= 1
+        k -= 1
         if k == 0:
             return t.data
         t = t.right
