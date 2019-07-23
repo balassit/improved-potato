@@ -39,6 +39,18 @@ def heap_sort(items):
         heapify(items, i, 0)
 
 
+def is_min_heap(A):
+    # check for all internal nodes that their left child and
+    # right child (if present) holds min-heap property or not
+
+    # start with index 0 (root of the heap)
+    for i in range((len(A) - 2) // 2):
+        if A[i] > A[2 * i + 1] or ((2 * i + 2 != len(A)) and A[i] > A[2 * i + 2]):
+            return False
+
+    return True
+
+
 """
 Sort a given list and print before and after. Assume list is integers
 """
