@@ -9,7 +9,7 @@ def is_valid(row, col):
     """
     verify that the position is inbounds the grid
     """
-    return row < rows and col < cols and row >= 0 and col >= 0
+    return 0 <= row < rows and 0 <= col < cols
 
 
 def find_shortest_path(matrix, start):

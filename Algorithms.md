@@ -54,9 +54,20 @@ https://medium.com/human-in-a-machine-world/quicksort-the-best-sorting-algorithm
 
 Binary Search
 
-Breadth First Search (BFS)
+Breadth First Search (BFS):
+
+- use to find shortest path
+- check connectedness
+- serialize/deserialize a binary tree
 
 Depth First Search (DFS)
+
+- use to exhaust all possibilities
+- check which is best
+- count number of possible ways
+- check connectedness
+- cycle detection
+- eulerian path
 
 Lee algorithm | Shortest path in a Maze
 
