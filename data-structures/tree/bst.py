@@ -126,6 +126,18 @@ def dfs(t, chooser=left_then_right):
             yield from dfs(immediate_child, chooser)
 
 
+def dfs_iterative(t):
+    res = []
+    s = [t]
+    while s:
+        v = s.pop()
+        if v:
+            s.append(v.right)
+            s.append(v.left)
+            res.append(v)
+    return res
+
+
 def bfs(t):
     """In BFS the Node Values at each level of the Tree are traversed before going to next level"""
     to_visit = [t]
@@ -285,16 +297,16 @@ def constructFromPrePost(self, pre, post):
     return stack[0]
 
 
-# tree = Tree()
-# tree.root = Node(9,9)
-# tree.root.left = Node(10,10)
-# tree.root.right = Node(2,2)
-# tree.root.left.left = Node(1,1)
-# tree.root.left.right = Node(3,3)
-
-arr = [1, 4, 5, 7, 8, 9]
 tree = Tree()
-tree.root = sorted_arr_to_bst(arr)
+tree.root = Node(9,9)
+tree.root.left = Node(10,10)
+tree.root.right = Node(2,2)
+tree.root.left.left = Node(1,1)
+tree.root.left.right = Node(3,3)
+
+# arr = [1, 4, 5, 7, 8, 9]
+# tree = Tree()
+# tree.root = sorted_arr_to_bst(arr)
 
 print("3rd smallest: ", kth_smallest(tree.root, 3))
 
@@ -316,9 +328,10 @@ print("valid BST: ", validate_bst(tree.root))
 # a = [n for n in bfs(tree.root)]
 # print(a)
 
-# print("DFS left to right")
+print("DFS left to right")
 # a = [n for n in dfs(tree.root, chooser=left_then_right)]
 # print(a)
+print(dfs_iterative(tree.root))
 
 # print("DFS right to left")
 # a = [n for n in dfs(tree.root, chooser=right_then_left)]
