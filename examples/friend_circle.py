@@ -9,9 +9,9 @@ def find_circle_num(M):
                 cur = stack.pop()
                 if cur not in friend_zone:
                     friend_zone.add(cur)
-                    stack.extend([j for j,v in enumerate(M[cur]) if v and j not in friend_zone])
+                    stack.extend([j for j, v in enumerate(M[cur]) if v and j not in friend_zone])
             circles += 1
     return circles
 
 
-print(find_circle_num([[1,1,0],[1,1,0],[0,0,1]]))
+print(find_circle_num([[1, 1, 0], [1, 1, 0], [0, 0, 1]]))

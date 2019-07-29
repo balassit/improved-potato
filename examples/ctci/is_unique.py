@@ -1,16 +1,18 @@
 def is_unique(s):
     s = sorted(list(s))
-    for i in range(0,len(s)-1):
+    for i in range(0, len(s) - 1):
 
-        if s[i] == s[i+1]:
+        if s[i] == s[i + 1]:
             return False
     return True
+
 
 def is_permuatation(s1, s2):
     """
     permuatation means has the same characters
     """
     return sorted(list(s1)) == sorted(list(s2))
+
 
 def urlify(s, size):
     s = list(s)

@@ -3,7 +3,8 @@ def numIslands(grid):
     # find all locations with a '1' - O(row * cols)
     for i, row in enumerate(grid):
         for j, _ in enumerate(row):
-            if grid[i][j] == "1": visited.add((i, j))
+            if grid[i][j] == "1":
+                visited.add((i, j))
 
     print(visited)
 
@@ -14,8 +15,10 @@ def numIslands(grid):
         adjacent_spots.add(vertex)
         while len(adjacent_spots) > 0:
             vertex = adjacent_spots.pop()
-            try: visited.remove(vertex)
-            except KeyError: pass  # The first item is already popped
+            try:
+                visited.remove(vertex)
+            except KeyError:
+                pass  # The first item is already popped
             for neighbor in get_neighbors(vertex, visited):
                 adjacent_spots.add(neighbor)
                 visited.remove(neighbor)
@@ -23,22 +26,28 @@ def numIslands(grid):
 
     return num_islands
 
+
 def get_neighbors(vertex, visited):
     neighbors_set = set()
-    #left
+    # left
     if (vertex[0] - 1, vertex[1]) in visited:
         neighbors_set.add((vertex[0] - 1, vertex[1]))
-    #right
+    # right
     if ((vertex[0] + 1, vertex[1])) in visited:
         neighbors_set.add((vertex[0] + 1, vertex[1]))
-    #top
+    # top
     if ((vertex[0], vertex[1] + 1)) in visited:
         neighbors_set.add((vertex[0], vertex[1] + 1))
-    #bottom
+    # bottom
     if ((vertex[0], vertex[1] - 1)) in visited:
         neighbors_set.add((vertex[0], vertex[1] - 1))
     return neighbors_set
 
 
-grid = [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
+grid = [
+    ["1", "1", "0", "0", "0"],
+    ["1", "1", "0", "0", "0"],
+    ["0", "0", "1", "0", "0"],
+    ["0", "0", "0", "1", "1"],
+]
 print(numIslands(grid))
