@@ -2,12 +2,12 @@
 
 ## Arrays
 
-Use case: 
+Use case:
 1. excessive read, as time complexity is always O(1)
 2. Random access to element using index
 
 ArrayList:
-excessive read, random access using index, more flexible in coding, 
+excessive read, random access using index, more flexible in coding,
 effective use of memory space as items get allocated as needed
 
 ### Average Time Complexity
@@ -22,7 +22,7 @@ Delete - n
 
 Use case:
 1. Effective use of memory space as items get allocated as needed
-2. excessive add/remove of elements. Better than ArrayList because items would be shifted in ArrayList, 
+2. excessive add/remove of elements. Better than ArrayList because items would be shifted in ArrayList,
 with linked lists the new item gets injected in the list without the need to shift the other items as they are not adjacent in memory
 
 ### Average Time Complexity
@@ -65,7 +65,7 @@ Delete - 1
 
 Worst case us O(n) for all
 
-### Space Complexity - O(n) 
+### Space Complexity - O(n)
 
 ## Sorting
 
@@ -85,7 +85,17 @@ Deletion from BST
 
 Stack, Queue
 
-Min Heap and Max Heap
+### Min Heap and Max Heap
+- parent of node is i / 2
+- left child is 2 * i
+- right child is 2 * i + 1
+
+Max Heap:
+- key is greater than its children
+- A[n/2] + 1 -> n are all leaves (middle of list)
+
+Min Heap:
+- key is less than its children
 
 Graph Implementation using STL
 Graph Implementation in C++ without using STL
