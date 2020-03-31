@@ -104,3 +104,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+lib/
+bin/
+__pycache__/
+.idea/
+.pytest_cache/

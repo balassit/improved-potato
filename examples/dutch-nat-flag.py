@@ -19,6 +19,6 @@ def sortColors(nums) -> None:
             raise ValueError(f"Invalid input found: {nums[cur]}")
 
 
-arr = [2, 0, 2, 1, 3, 1, 0]
+arr = [2, 0, 2, 1, 2, 1, 0]
 sortColors(arr)
 print(arr)

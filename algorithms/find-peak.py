@@ -21,12 +21,12 @@ def find_peak(nums):
         # not a peak and right is >, then left must have peak
         elif mid > 0 and nums[mid - 1] > nums[mid]:
             high = mid
-        # not a peak and left is >, then left must have peak
+        # not a peak and left is >, then right must have peak
         else:
             low = mid + 1
 
 
-arr = [3, 2, 1]
+arr = [1, 5, 3, 21]
 print(f"peak in array: {arr[find_peak(arr)]}")
 
 """

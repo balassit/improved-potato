@@ -108,9 +108,9 @@ edges = ["AB", "AC", "BA", "BD", "BE", "CA", "CF", "DB", "EB", "EF", "FC", "FE"]
 for edge in edges:
     g.add_edge(edge[:1], edge[1:])
 
-g.print_graph()
+# g.print_graph()
 # print('bfs', g.bfs('C')) # {'B', 'C', 'A', 'F', 'D', 'E'}
-# print(list(g.bfs_paths('A', 'F'))) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
+print(list(g.bfs_paths("A", "F")))  # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
 # print("shortest", g.shortest_path("A", "F"))  # ['A', 'C', 'F']
-print("dfs", g.dfs("C"))  # {'E', 'D', 'F', 'A', 'C', 'B'}
+# print("dfs", g.dfs("C"))  # {'E', 'D', 'F', 'A', 'C', 'B'}
 # print(list(g.dfs_paths('C', 'F'))) # [['C', 'F'], ['C', 'A', 'B', 'E', 'F']]

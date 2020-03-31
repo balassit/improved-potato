@@ -63,13 +63,16 @@ def delete_dups(node):
 
 
 def kth_to_last(node, k):
-    current = node
+    curr = node
+    if node is None:
+        return None
+    curr = node
     for _ in range(k):
-        if current is None:
+        if curr is None:
             return None
-        current = current.next
-    while current is not Node and current.next is not None:
-        current = current.next
+        curr = curr.next
+    while curr is not None:
+        curr = curr.next
         node = node.next
     return node.data
 
@@ -77,10 +80,12 @@ def kth_to_last(node, k):
 l = LinkedList()
 l.insert(1)
 l.insert(2)
+l.insert(8)
 l.insert(3)
+l.insert(7)
+l.insert(0)
 l.insert(4)
-l.delete(4)
 print([node.data for node in l])
 
 # delete_dups(l.root)
-# print(kth_to_last(l.root,1))
+print(kth_to_last(l.root, 3))

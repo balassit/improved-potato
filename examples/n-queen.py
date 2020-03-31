@@ -70,6 +70,6 @@ def solveNQ():
 
 
 # driver program to test above function
-N = 4
+N = 5
 board = [[0 for i in range(N)] for j in range(N)]
 solveNQ()

@@ -17,19 +17,18 @@ def is_permuatation(s1, s2):
 def urlify(s, size):
     s = list(s)
     n = len(s) - 1
-    print(s)
     for i in range(size - 1, 0, -1):
         print(f"_{s[i]}_")
         if s[i] == " ":
-            s[n] = s[i]
-            # s[n] = "0"
-            # s[n-1] = "2"
-            # s[n-2] = "%"
-            # n -= 3
+            # s[n] = s[i]
+            s[n] = "0"
+            s[n - 1] = "2"
+            s[n - 2] = "%"
+            n -= 3
         else:
             s[n] = s[i]
             n -= 1
-    print(s)
+    return "".join(s)
 
 
 # is_unique

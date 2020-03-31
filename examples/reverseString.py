@@ -4,22 +4,8 @@ import timeit
 def reverse_string(string):
     # create a list of the chars
     chars = list(s)
-    for i, val in enumerate(s):
-        if i == len(s) // 2:
-            break
-        tmp = val
-        chars[i] = chars[len(s) - i - 1]
-        chars[len(s) - i - 1] = tmp
-    return "".join(chars)
-
-
-def reverse_string2(string):
-    # create a list of the chars
-    chars = list(s)
     for i in range(len(s) // 2):
-        tmp = chars[i]
-        chars[i] = chars[len(s) - i - 1]
-        chars[len(s) - i - 1] = tmp
+        chars[i], chars[len(s) - i - 1] = chars[len(s) - i - 1], chars[i]
     return "".join(chars)
 
 

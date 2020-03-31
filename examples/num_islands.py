@@ -15,10 +15,6 @@ def numIslands(grid):
         adjacent_spots.add(vertex)
         while len(adjacent_spots) > 0:
             vertex = adjacent_spots.pop()
-            try:
-                visited.remove(vertex)
-            except KeyError:
-                pass  # The first item is already popped
             for neighbor in get_neighbors(vertex, visited):
                 adjacent_spots.add(neighbor)
                 visited.remove(neighbor)

@@ -127,6 +127,9 @@ def dfs(t, chooser=left_then_right):
 
 
 def dfs_iterative(t):
+    """
+    preorder
+    """
     res = []
     s = [t]
     while s:
@@ -191,6 +194,7 @@ def kth_smallest(t, k):
         while t:
             s.append(t)
             t = t.left
+        print(s)
         t = s.pop()
 
         k -= 1
@@ -211,8 +215,8 @@ def inorder(t):
 def inorder_iterative(t):
     if not t:
         return None
-    s = list()
-    res = list()
+    s = []
+    res = []
     while t or s:
         while t:
             s.append(t)
@@ -220,6 +224,40 @@ def inorder_iterative(t):
         t = s.pop()
         res.append(t)
         t = t.right
+    return res
+
+
+def preorderTraversal(root):
+    if not root:
+        return None
+    res = []
+    s = [root]
+    while s:
+        cur = s.pop()
+        if cur:
+            s.append(cur.right)
+            s.append(cur.left)
+            res.append(cur)
+    return res
+
+
+def postorderTraversal(self, root):
+    if root is None:
+        return
+    res = []
+    s1 = [root]
+    s2 = []
+    while s1:
+        cur = s1.pop()
+        s2.append(cur)
+        if cur.left:
+            s1.append(cur.left)
+        if cur.right:
+            s1.append(cur.right)
+
+    # Print all elements of second stack
+    while s2:
+        res.append(s2.pop().data)
     return res
 
 
@@ -298,11 +336,11 @@ def constructFromPrePost(self, pre, post):
 
 
 tree = Tree()
-tree.root = Node(9,9)
-tree.root.left = Node(10,10)
-tree.root.right = Node(2,2)
-tree.root.left.left = Node(1,1)
-tree.root.left.right = Node(3,3)
+tree.root = Node(9, 9)
+tree.root.left = Node(10, 10)
+tree.root.right = Node(2, 2)
+tree.root.left.left = Node(1, 1)
+tree.root.left.right = Node(3, 3)
 
 # arr = [1, 4, 5, 7, 8, 9]
 # tree = Tree()
@@ -313,20 +351,20 @@ print("3rd smallest: ", kth_smallest(tree.root, 3))
 print("in order")
 print(inorder_iterative(tree.root))
 print("valid BST: ", validate_bst(tree.root))
-# a = [n for n in inorder(tree.root)]
-# print(a)
+a = [n for n in inorder(tree.root)]
+print(a)
 
-# print("pre order")
-# a = [n for n in preorder(tree.root)]
-# print(a)
+print("pre order")
+a = [n for n in preorder(tree.root)]
+print(a)
 
-# print("post order")
-# a = [n for n in postorder(tree.root)]
-# print(a)
+print("post order")
+a = [n for n in postorder(tree.root)]
+print(a)
 
-# print("Breadth first search")
-# a = [n for n in bfs(tree.root)]
-# print(a)
+print("Breadth first search")
+a = [n for n in bfs(tree.root)]
+print(a)
 
 print("DFS left to right")
 # a = [n for n in dfs(tree.root, chooser=left_then_right)]
@@ -337,11 +375,11 @@ print(dfs_iterative(tree.root))
 # a = [n for n in dfs(tree.root, chooser=right_then_left)]
 # print(a)
 
-# print("Binary search DFS")
-# a = [n for n in dfs(tree.root, binary_search_chooser(6))]
-# print(a)
+print("Binary search DFS")
+a = [n for n in dfs(tree.root, binary_search_chooser(6))]
+print(a)
 
-# print("height", tree.get_height(tree.root))
+print("height", tree.get_height(tree.root))
 
 # inorder_arr = [23,18,17,4,3,13,26]
 # preorder_arr = [3,17,18,23,4,13,26]

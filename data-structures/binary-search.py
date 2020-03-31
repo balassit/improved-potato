@@ -18,7 +18,7 @@ def binarySearch(arr, left, right, x):
 
 # Test array
 arr = [2, 3, 4, 10, 40]
-x = 1
+x = 10
 
 # Function call
 result = binarySearch(arr, 0, len(arr) - 1, x)

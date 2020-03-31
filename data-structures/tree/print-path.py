@@ -41,6 +41,9 @@ def get_path_between_nodes(root, node1, node2):
     get_path(root, path1, node1)
     get_path(root, path2, node2)
 
+    print(path1)
+    print(path2)
+
     # Get intersection point
     i, j = 0, 0
     intersection = 0
